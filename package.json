@@ -1,0 +1,30 @@
+{
+  "name": "storyTellingWeb",
+  "version": "1.0.0",
+  "description": "MVP website - create your own story",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehdtlaos/storyTellingWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ehdtlaos/storyTellingWeb/issues"
+  },
+  "homepage": "https://github.com/ehdtlaos/storyTellingWeb#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

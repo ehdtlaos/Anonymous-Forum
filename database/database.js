@@ -19,8 +19,8 @@ const getPost = async (page, count, callback) => {
   });
 };
 
-const getPostComment = async (page, count, post_id, callback) => {
-  const queryString = `SELECT comment_id, post_id, comment_nick_name, comment_body, comment_like, comment_dislike, comment_created FROM comment WHERE comment_delete = false AND post_id = ${post_id} LIMIT ${count} OFFSET ${count * page}`
+const getPostComment = async (post_id, callback) => {
+  const queryString = `SELECT comment_id, post_id, comment_nick_name, comment_body, comment_like, comment_dislike, comment_created FROM comment WHERE comment_delete = false AND post_id = ${post_id}`
   await pool.query(queryString, (err, res) => {
     if (err) {
       console.log(err);

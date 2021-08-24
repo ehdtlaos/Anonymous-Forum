@@ -5,7 +5,6 @@ import Comment from './Comment.jsx'
 
 function Posting() {
   const [currentPosting, setCurrentPosting] = useState(null);
-  const [currentComment, setCurrentComment] = useState(null);
 
   const getPosting = async () => {
     try {
@@ -16,26 +15,11 @@ function Posting() {
     }
   }
 
-  const getComment = async (id) => {
-    try {
-      const fetchComment = await axios.get(`/posting/${id}/comment`);
-      setCurrentComment(fetchComment.data);
-    } catch(e) {
-      console.log('error when fetching comment data');
-    }
-  }
-
   useEffect(() => {
     getPosting();
   }, [])
 
-  useEffect(() => {
-    if (currentPosting !== null) {
-      getComment(currentPosting[0].post_id)
-    }
-  }, [currentPosting])
-
-  if (currentPosting !== null && currentComment !== null) {
+  if (currentPosting !== null) {
     return (
       <div className="main_postings">
         {currentPosting.map((post) => (
@@ -46,7 +30,7 @@ function Posting() {
             <div className="postings_body">{post.post_body}</div>
             <div className="postings_like">like: {post.post_upvote ? post.post_upvote: 0}</div>
             <div className="postings_comment">comment</div>
-            <Comment post={post.post_id} comment={currentComment} />
+            <Comment post={post.post_id} />
           </div>
         ))}
       </div>

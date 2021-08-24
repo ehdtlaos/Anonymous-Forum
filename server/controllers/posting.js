@@ -23,15 +23,8 @@ module.exports = {
   },
 
   getPostComment: (req, res) => {
-    let {page, count} = req.query;
     const { post_id } = req.params;
-    if (page === undefined) {
-      page = 0;
-    };
-    if (count === undefined) {
-      count = 10;
-    }
-    db.getPostComment(page, count, post_id, (err, result) => {
+    db.getPostComment(post_id, (err, result) => {
       if (err) {
         res.status(400)
         console.log(err);

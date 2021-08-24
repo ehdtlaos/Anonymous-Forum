@@ -1,0 +1,31 @@
+.comments{
+  border: 1px solid black;
+  margin-bottom: 2px;
+  padding: 5px;
+}
+
+.comments_name{
+  display: inline-block;
+  width: 50%;
+}
+
+.comments_date{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+
+.comments_like{
+  display: inline-block;
+  width: 60px;
+}
+
+.comments_dislike{
+  display: inline-block;
+  width: 60px;
+}
+
+.comments_reply{
+  display: inline-block;
+  width: 60px;
+}

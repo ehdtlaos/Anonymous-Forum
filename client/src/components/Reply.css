@@ -1,31 +1,48 @@
 .replies  {
-  border: 1px solid pink;
-  margin-bottom: 3px;
+  position: relative;
+  background: rgb(169, 169, 169);
   padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 0px;
 }
 
 .reply_name{
   display: inline-block;
   width: 50%;
+  color: rgb(91, 91, 91);
+  font-size: 15px;
 }
 
 .reply_date{
   display: inline-block;
   width: 50%;
   text-align: right;
+  color: rgb(91, 91, 91);
+  font-size: 15px;
+}
+
+.reply_body{
+  margin: 10px 5px 10px 5px;
 }
 
 .reply_like{
   display: inline-block;
   width: 80px;
+  color: rgb(91, 91, 91);
+  font-size: 15px;
 }
 
 .reply_dislike{
   display: inline-block;
   width: 100px;
+  color: rgb(91, 91, 91);
+  font-size: 15px;
 }
 
-.reply_reply{
+.reply_delete{
   display: inline-block;
   width: 80px;
+  color: rgb(91, 91, 91);
+  font-size: 15px;
 }

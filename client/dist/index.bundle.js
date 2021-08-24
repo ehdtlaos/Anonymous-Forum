@@ -2197,7 +2197,9 @@ function Reply(_ref) {
         className: "reply_like"
       }, "Like: ", (_reply$reply_like = reply.reply_like) !== null && _reply$reply_like !== void 0 ? _reply$reply_like : 0), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "reply_dislike"
-      }, "Dislike: ", (_reply$reply_dislike = reply.reply_dislike) !== null && _reply$reply_dislike !== void 0 ? _reply$reply_dislike : 0)) : null;
+      }, "Dislike: ", (_reply$reply_dislike = reply.reply_dislike) !== null && _reply$reply_dislike !== void 0 ? _reply$reply_dislike : 0), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+        className: "reply_delete"
+      }, "Delete")) : null;
     }));
   } else {
     return null;

@@ -36,6 +36,7 @@ function Reply({id}) {
             <div className="reply_body">{reply.reply_body}</div>
             <div className="reply_like">Like: {reply.reply_like ?? 0}</div>
             <div className="reply_dislike">Dislike: {reply.reply_dislike ?? 0}</div>
+            <div className="reply_delete">Delete</div>
           </div>
           ) : null
         ))}

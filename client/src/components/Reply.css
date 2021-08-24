@@ -1,0 +1,31 @@
+.replies  {
+  border: 1px solid black;
+  margin-bottom: 3px;
+  padding: 5px;
+}
+
+.reply_name{
+  display: inline-block;
+  width: 50%;
+}
+
+.reply_date{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+
+.reply_like{
+  display: inline-block;
+  width: 60px;
+}
+
+.reply_dislike{
+  display: inline-block;
+  width: 60px;
+}
+
+.reply_reply{
+  display: inline-block;
+  width: 60px;
+}

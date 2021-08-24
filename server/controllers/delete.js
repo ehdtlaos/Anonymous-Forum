@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../../database/admin.js');
+const db = require('../../database/delete.js');
 
 const app = express();
 

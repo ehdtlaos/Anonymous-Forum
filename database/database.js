@@ -4,7 +4,7 @@ const { password } = require('../config.js');
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "storyTellingWeb",
+  database: "MVP",
   password: password,
   port: 5432,
 });

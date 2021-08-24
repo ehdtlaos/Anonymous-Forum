@@ -1,8 +1,11 @@
 import React from 'react';
+import Posting from './Posting.jsx'
 
 function App() {
   return (
-    <div className="test">hello, world</div>
+    <div>
+      <Posting />
+    </div>
   );
 }
 

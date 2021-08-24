@@ -34,8 +34,8 @@ function Reply({id}) {
             <div className="reply_name">{reply.reply_nick_name}</div>
             <div className="reply_date">{reply.reply_created ?? 'Aug 24, 2021'}</div>
             <div className="reply_body">{reply.reply_body}</div>
-            <div className="reply_like">{reply.reply_like ?? 0}</div>
-            <div className="reply_dislike">{reply.reply_dislike ?? 0}</div>
+            <div className="reply_like">Like: {reply.reply_like ?? 0}</div>
+            <div className="reply_dislike">Dislike: {reply.reply_dislike ?? 0}</div>
           </div>
           ) : null
         ))}

@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 const getPost = async (page, count, callback) => {
-  const queryString = `SELECT post_id, post_nick_name, post_title, post_body, post_img, post_created, post_upvote FROM post WHERE post_delete = false LIMIT ${count} OFFSET ${count * page};`
+  const queryString = `SELECT post_id, post_nick_name, post_title, post_body, post_img, post_created, post_upvote FROM post WHERE post_delete = false ORDER BY post_id DESC LIMIT ${count} OFFSET ${count * page};`
   await pool.query(queryString, (err, res) => {
     if (err) {
       console.log(err);

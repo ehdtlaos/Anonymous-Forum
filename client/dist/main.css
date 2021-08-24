@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -16,36 +17,89 @@ body {
 }
 
 .postings{
-  border: 1px solid black;
-  margin-bottom: 2px;
-  padding: 5px;
+  position: relative;
+  width: 350px;
+  background: white;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .postings_name{
   display: inline-block;
   width: 50%;
+  color: rgb(111, 111, 111);
+  font-size: 15px;
 }
 
 .postings_time{
   display: inline-block;
   width: 50%;
   text-align: right;
+  color: rgb(111, 111, 111);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.postings_title{
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  overflow-wrap: break-word;
+}
+
+.postings_body{
+  font-size: 15px;
+  font-weight: 300;
+  margin: 15px 15px 30px 15px;
+  overflow-wrap: break-word;
 }
 
 .postings_like{
   display: inline-block;
   width: 60px;
+  color: rgb(111, 111, 111);
+  font-size: 15px;
+  margin-bottom: 10px;
 }
 
 .postings_comment{
   display: inline-block;
   width: 20%;
+  color: rgb(111, 111, 111);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.postings_write{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+.postings_delete{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+.main_write{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+.main_delete{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
 }
 /*!******************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Comment.css ***!
   \******************************************************************************/
 .comments{
-  border: 1px solid black;
+  border: 2px solid white;
   margin-bottom: 2px;
   padding: 5px;
 }
@@ -63,24 +117,35 @@ body {
 
 .comments_like{
   display: inline-block;
-  width: 60px;
+  width: 80px;
 }
 
 .comments_dislike{
   display: inline-block;
-  width: 60px;
+  width: 100px;
 }
 
 .comments_reply{
   display: inline-block;
-  width: 60px;
+  width: 80px;
 }
 
+.comments_write{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+.comments_delete{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Reply.css ***!
   \****************************************************************************/
 .replies  {
-  border: 1px solid black;
+  border: 1px solid pink;
   margin-bottom: 3px;
   padding: 5px;
 }
@@ -98,18 +163,31 @@ body {
 
 .reply_like{
   display: inline-block;
-  width: 60px;
+  width: 80px;
 }
 
 .reply_dislike{
   display: inline-block;
-  width: 60px;
+  width: 100px;
 }
 
 .reply_reply{
   display: inline-block;
-  width: 60px;
+  width: 80px;
+}
+/*!**************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/App.css ***!
+  \**************************************************************************/
+.main_write{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
 }
 
+.main_delete{
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
 
 /*# sourceMappingURL=main.css.map*/

@@ -31,8 +31,12 @@ function Posting() {
             <div className="postings_like">like: {post.post_upvote ? post.post_upvote: 0}</div>
             <div className="postings_comment">comment</div>
             <Comment post={post.post_id} />
+            <div className="postings_write">write</div>
+            <div className="postings_delete">delete</div>
           </div>
         ))}
+        <div className="main_write">write</div>
+        <div className="main_delete">delete</div>
       </div>
     )
   } else {

@@ -1,5 +1,5 @@
 .replies  {
-  border: 1px solid black;
+  border: 1px solid pink;
   margin-bottom: 3px;
   padding: 5px;
 }
@@ -17,15 +17,15 @@
 
 .reply_like{
   display: inline-block;
-  width: 60px;
+  width: 80px;
 }
 
 .reply_dislike{
   display: inline-block;
-  width: 60px;
+  width: 100px;
 }
 
 .reply_reply{
   display: inline-block;
-  width: 60px;
+  width: 80px;
 }

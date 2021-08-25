@@ -11796,6 +11796,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Comment_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Comment.css */ "./src/components/Comment.css");
 /* harmony import */ var _Comment_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Comment_css__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _Reply_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Reply.jsx */ "./src/components/Reply.jsx");
+/* harmony import */ var _WriteReply_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WriteReply.jsx */ "./src/components/WriteReply.jsx");
+
 
 
 
@@ -11805,12 +11807,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Comment(_ref) {
-  var post = _ref.post;
+  var post = _ref.post,
+      show = _ref.show;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
       currentComment = _useState2[0],
       setCurrentComment = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState3, 2),
+      writeReplyShow = _useState4[0],
+      setWriteReplyShow = _useState4[1];
+
+  var viewReplyComments = function viewReplyComments() {
+    writeReplyShow ? setWriteReplyShow(false) : setWriteReplyShow(true);
+  };
 
   var getComment = /*#__PURE__*/function () {
     var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee(id) {
@@ -11856,7 +11868,15 @@ function Comment(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     getComment(post);
   }, []);
-  console.log(currentComment);
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    if (show === true) {
+      for (var i = 0; i < currentComment.length; i++) {
+        if (post === currentComment[i].post_id) {
+          currentComment[i].comment_show = true;
+        }
+      }
+    }
+  }, [show]);
 
   if (currentComment !== null && currentComment !== 'none') {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
@@ -11875,17 +11895,24 @@ function Comment(_ref) {
         className: "comments_body"
       }, comments.comment_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "comments_like"
-      }, "Like: ", (_comments$comment_lik = comments.comment_like) !== null && _comments$comment_lik !== void 0 ? _comments$comment_lik : 0), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      }, (_comments$comment_lik = comments.comment_like) !== null && _comments$comment_lik !== void 0 ? _comments$comment_lik : 0, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "comments_dislike"
-      }, "Dislike: ", (_comments$comment_dis = comments.comment_dislike) !== null && _comments$comment_dis !== void 0 ? _comments$comment_dis : 0), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      }, (_comments$comment_dis = comments.comment_dislike) !== null && _comments$comment_dis !== void 0 ? _comments$comment_dis : 0, " dislikes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "comments_reply"
       }, "Reply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Reply_jsx__WEBPACK_IMPORTED_MODULE_6__.default, {
         id: comments.comment_id
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-        className: "comments_write"
+        className: "comments_write",
+        onClick: function onClick() {
+          viewReplyComments();
+        }
       }, "write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "comments_delete"
-      }, "delete")) : null;
+      }, "delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_WriteReply_jsx__WEBPACK_IMPORTED_MODULE_7__.default, {
+        handleClose: viewReplyComments,
+        show: writeReplyShow,
+        comment: comments.comment_id
+      })) : null;
     }));
   } else {
     return null;
@@ -11963,6 +11990,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Posting_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Posting.css */ "./src/components/Posting.css");
 /* harmony import */ var _Posting_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Posting_css__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _Comment_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Comment.jsx */ "./src/components/Comment.jsx");
+/* harmony import */ var _WriteComment_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./WriteComment.jsx */ "./src/components/WriteComment.jsx");
+/* harmony import */ var _WritePost_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WritePost.jsx */ "./src/components/WritePost.jsx");
+
+
 
 
 
@@ -11976,6 +12007,26 @@ function Posting() {
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
       currentPosting = _useState2[0],
       setCurrentPosting = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState3, 2),
+      writeCommentShow = _useState4[0],
+      setWriteCommentShow = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState5, 2),
+      writePostShow = _useState6[0],
+      setWritePostShow = _useState6[1];
+
+  console.log(writePostShow);
+
+  var viewPostComments = function viewPostComments() {
+    writePostShow ? setWritePostShow(false) : setWritePostShow(true);
+  };
+
+  var viewWriteComments = function viewWriteComments() {
+    writeCommentShow ? setWriteCommentShow(false) : setWriteCommentShow(true);
+  };
 
   var getPosting = /*#__PURE__*/function () {
     var _ref = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee() {
@@ -12033,18 +12084,28 @@ function Posting() {
         className: "postings_body"
       }, post.post_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "postings_like"
-      }, "like: ", post.post_upvote ? post.post_upvote : 0), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      }, post.post_upvote ? post.post_upvote : 0, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "postings_comment"
-      }, "comment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Comment_jsx__WEBPACK_IMPORTED_MODULE_6__.default, {
-        post: post.post_id
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-        className: "postings_write"
+      }, "comment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+        className: "postings_write",
+        onClick: function onClick() {
+          viewWriteComments();
+        }
       }, "write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "postings_delete"
-      }, "delete"));
+      }, "delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Comment_jsx__WEBPACK_IMPORTED_MODULE_6__.default, {
+        post: post.post_id
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_WriteComment_jsx__WEBPACK_IMPORTED_MODULE_7__.default, {
+        show: writeCommentShow,
+        post: post.post_id,
+        handleClose: viewWriteComments
+      }));
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
       className: "main_write"
-    }, "write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    }, "write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_WritePost_jsx__WEBPACK_IMPORTED_MODULE_8__.default, {
+      show: writePostShow,
+      handleClose: viewPostComments
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
       className: "main_delete"
     }, "delete"));
   } else {
@@ -12090,8 +12151,6 @@ function Reply(_ref) {
       currentReply = _useState2[0],
       setCurrentReply = _useState2[1];
 
-  console.log(id);
-
   var getReply = /*#__PURE__*/function () {
     var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee(comment_id) {
       var fetchReply;
@@ -12105,7 +12164,6 @@ function Reply(_ref) {
 
             case 3:
               fetchReply = _context.sent;
-              console.log(fetchReply);
 
               if (fetchReply.data !== undefined) {
                 setCurrentReply(fetchReply.data);
@@ -12113,20 +12171,20 @@ function Reply(_ref) {
                 setCurrentReply('none');
               }
 
-              _context.next = 11;
+              _context.next = 10;
               break;
 
-            case 8:
-              _context.prev = 8;
+            case 7:
+              _context.prev = 7;
               _context.t0 = _context["catch"](0);
               console.log('error when fetching reply data');
 
-            case 11:
+            case 10:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 8]]);
+      }, _callee, null, [[0, 7]]);
     }));
 
     return function getReply(_x) {
@@ -12137,7 +12195,6 @@ function Reply(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     getReply(id);
   }, []);
-  console.log(currentReply);
 
   if (currentReply !== null && currentReply !== 'none') {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
@@ -12156,9 +12213,9 @@ function Reply(_ref) {
         className: "reply_body"
       }, reply.reply_body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "reply_like"
-      }, "Like: ", (_reply$reply_like = reply.reply_like) !== null && _reply$reply_like !== void 0 ? _reply$reply_like : 0), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      }, (_reply$reply_like = reply.reply_like) !== null && _reply$reply_like !== void 0 ? _reply$reply_like : 0, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "reply_dislike"
-      }, "Dislike: ", (_reply$reply_dislike = reply.reply_dislike) !== null && _reply$reply_dislike !== void 0 ? _reply$reply_dislike : 0), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      }, (_reply$reply_dislike = reply.reply_dislike) !== null && _reply$reply_dislike !== void 0 ? _reply$reply_dislike : 0, " dislikes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "reply_delete"
       }, "Delete")) : null;
     }));
@@ -12168,6 +12225,158 @@ function Reply(_ref) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Reply);
+
+/***/ }),
+
+/***/ "./src/components/WriteComment.jsx":
+/*!*****************************************!*\
+  !*** ./src/components/WriteComment.jsx ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WriteComment.css */ "./src/components/WriteComment.css");
+/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_WriteComment_css__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+function WriteComment(_ref) {
+  var show = _ref.show,
+      post = _ref.post,
+      handleClose = _ref.handleClose;
+  var showHideWriteComment = show ? "modal display-block" : "modal display-none";
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: showHideWriteComment
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeComment"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+    className: "writeComment_modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeComment_inside_model"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeComment_title"
+  }, "Write Comment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeCommentButton_wrappers"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "submit",
+    value: "Submit",
+    className: "writeCommentButton"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeCommentButton_divider"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "button",
+    className: "writeCommentButton",
+    onClick: handleClose
+  }, "Close"))))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (WriteComment);
+
+/***/ }),
+
+/***/ "./src/components/WritePost.jsx":
+/*!**************************************!*\
+  !*** ./src/components/WritePost.jsx ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WriteComment.css */ "./src/components/WriteComment.css");
+/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_WriteComment_css__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+function WritePost(_ref) {
+  var show = _ref.show,
+      handleClose = _ref.handleClose;
+  var showHideWritePost = show ? "modal display-block" : "modal display-none";
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: showHideWritePost
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writePost"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+    className: "writePost_modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writePost_inside_model"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writePost_title"
+  }, "Write Post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeReviewButton_wrappers"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "submit",
+    value: "Submit",
+    className: "writeReviewButton"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeReviewButton_divider"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "button",
+    className: "writeReviewButton",
+    onClick: handleClose
+  }, "Close"))))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (WritePost);
+
+/***/ }),
+
+/***/ "./src/components/WriteReply.jsx":
+/*!***************************************!*\
+  !*** ./src/components/WriteReply.jsx ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _WriteReply_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WriteReply.css */ "./src/components/WriteReply.css");
+/* harmony import */ var _WriteReply_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_WriteReply_css__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+function WriteReply(_ref) {
+  var show = _ref.show,
+      comment = _ref.comment,
+      handleClose = _ref.handleClose;
+  var showHideWriteReply = show ? "modal display-block" : "modal display-none";
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: showHideWriteReply
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "WriteReply"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+    className: "WriteReply_modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "WriteReply_inside_model"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "WriteReply_title"
+  }, "Write Reply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeReplyButton_wrappers"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "submit",
+    value: "Submit",
+    className: "writeReplyButton"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "writeReplyButton_divider"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "button",
+    className: "writeReplyButton",
+    onClick: handleClose
+  }, "Close"))))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (WriteReply);
 
 /***/ }),
 
@@ -12270,6 +12479,48 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "// extracted by mini-css-extract-plugin\nexport {};", "",{"version":3,"sources":["webpack://src/components/Reply.css"],"names":[],"mappings":"AAAA;QACQ,CAAA","sourcesContent":["// extracted by mini-css-extract-plugin\nexport {};"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WriteComment.css":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WriteComment.css ***!
+  \***************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "// extracted by mini-css-extract-plugin\nexport {};", "",{"version":3,"sources":["webpack://src/components/WriteComment.css"],"names":[],"mappings":"AAAA;QACQ,CAAA","sourcesContent":["// extracted by mini-css-extract-plugin\nexport {};"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WriteReply.css":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WriteReply.css ***!
+  \*************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "// extracted by mini-css-extract-plugin\nexport {};", "",{"version":3,"sources":["webpack://src/components/WriteReply.css"],"names":[],"mappings":"AAAA;QACQ,CAAA","sourcesContent":["// extracted by mini-css-extract-plugin\nexport {};"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -44055,6 +44306,62 @@ module.exports = content.locals || {};
 
 var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
             var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js!./Reply.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/Reply.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.id, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/components/WriteComment.css":
+/*!*****************************************!*\
+  !*** ./src/components/WriteComment.css ***!
+  \*****************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js!./WriteComment.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WriteComment.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.id, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/components/WriteReply.css":
+/*!***************************************!*\
+  !*** ./src/components/WriteReply.css ***!
+  \***************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js!./WriteReply.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WriteReply.css");
 
             content = content.__esModule ? content.default : content;
 

@@ -4,7 +4,7 @@
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
-  border-radius: 1px;
+  border-radius: 10px;
 }
 
 .reply_name{
@@ -35,7 +35,7 @@
 
 .reply_dislike{
   display: inline-block;
-  width: 100px;
+  width: 110px;
   color: rgb(91, 91, 91);
   font-size: 15px;
 }

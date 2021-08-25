@@ -1,0 +1,74 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.writeComment_modal {
+  position:fixed;
+  background-color: rgb(67, 67, 67);
+  width: 50%;
+  max-height: 90%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border-radius: 8px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.writeComment_inside_model {
+  background-color: rgb(35, 35, 35);
+  width: 92%;
+  max-height: 95%;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.writeComment_title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 1px;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.writeCommentButton_wrappers {
+  text-align: center;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.writeCommentButton_divider {
+  display: inline-block;
+  margin: 10px;
+}
+
+.writeCommentButton {
+  width: 150px;
+  height: 55px;
+  font-size: 18px;
+  background-color: white;
+  color: rgb(50, 50, 50);
+  cursor: pointer;
+}
+
+.writeCommentButton:hover {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  transition: .3s ease;
+}

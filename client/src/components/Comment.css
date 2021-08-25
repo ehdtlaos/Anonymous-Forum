@@ -4,14 +4,14 @@
   padding: 15px;
   margin-bottom: 20px;
   margin-top: 10px;
-  border-radius: 1px;
+  border-radius: 15px;
 }
 
 .comments_name{
   display: inline-block;
   width: 50%;
   color: rgb(189, 189, 189);
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .comments_date{
@@ -28,7 +28,7 @@
   font-weight: 300;
   margin: 5px 5px 15px 5px;
   overflow-wrap: break-word;
-  color: rgb(213, 213, 213);
+  color: rgb(255, 255, 255);
 }
 
 .comments_like{
@@ -41,7 +41,7 @@
 
 .comments_dislike{
   display: inline-block;
-  width: 100px;
+  width: 120px;
   color: rgb(189, 189, 189);
   font-size: 15px;
   margin-bottom: 10px;
@@ -57,16 +57,48 @@
 
 .comments_write{
   display: inline-block;
-  width: 50%;
+  width: 49%;
   text-align: center;
   margin: 10px 0 0 0;
   color: rgb(189, 189, 189);
+  border-right: 1px solid white;
 }
 
 .comments_delete{
   display: inline-block;
-  width: 50%;
+  width: 49%;
   text-align: center;
   margin: 10px 0 5px 0;
   color: rgb(189, 189, 189);
+}
+
+.writeReview_modal {
+  position:fixed;
+  background-color: rgb(191, 191, 191);
+  width: 50%;
+  max-height: 90%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border-radius: 8px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.writeReview_inside_model {
+  background-color: white;
+  width: 92%;
+  max-height: 95%;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
 }

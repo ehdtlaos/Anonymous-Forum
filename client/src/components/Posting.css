@@ -23,6 +23,7 @@ body {
   padding: 20px;
   margin-bottom: 30px;
   margin-top: 30px;
+  border-radius: 10px;
 }
 
 .postings_name{
@@ -39,6 +40,7 @@ body {
   color: rgb(155, 155, 155);
   font-size: 15px;
   margin-bottom: 20px;
+
 }
 
 .postings_title{
@@ -67,7 +69,7 @@ body {
 
 .postings_comment{
   display: inline-block;
-  width: 20%;
+  width: 90px;
   color: rgb(155, 155, 155);
   font-size: 15px;
   margin-bottom: 10px;
@@ -75,28 +77,43 @@ body {
 
 .postings_write{
   display: inline-block;
-  width: 50%;
-  text-align: center;
+  width: 60px;
+  font-size: 15px;
   color: rgb(155, 155, 155);
 }
 
 .postings_delete{
   display: inline-block;
-  width: 50%;
-  text-align: center;
-    color: rgb(155, 155, 155);
+  width: 60px;
+  font-size: 15px;
+  color: rgb(155, 155, 155);
 }
 
 .main_write{
   display: inline-block;
   width: 50%;
   text-align: center;
-  color: rgb(155, 155, 155);
 }
 
 .main_delete{
   display: inline-block;
   width: 50%;
   text-align: center;
-  color: rgb(155, 155, 155);
 }
+
+/* .posting_comments{
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.posting_comments::before{
+  position: absolute;
+  width: .6rem;
+  height: 90%;
+  top: 50%;
+}
+
+.posting_comment::target .posting_comments{
+  max-height: 20rem;
+} */

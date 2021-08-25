@@ -26,6 +26,7 @@ body {
   padding: 20px;
   margin-bottom: 30px;
   margin-top: 30px;
+  border-radius: 10px;
 }
 
 .postings_name{
@@ -42,6 +43,7 @@ body {
   color: rgb(155, 155, 155);
   font-size: 15px;
   margin-bottom: 20px;
+
 }
 
 .postings_title{
@@ -70,7 +72,7 @@ body {
 
 .postings_comment{
   display: inline-block;
-  width: 20%;
+  width: 90px;
   color: rgb(155, 155, 155);
   font-size: 15px;
   margin-bottom: 10px;
@@ -78,31 +80,46 @@ body {
 
 .postings_write{
   display: inline-block;
-  width: 50%;
-  text-align: center;
+  width: 60px;
+  font-size: 15px;
   color: rgb(155, 155, 155);
 }
 
 .postings_delete{
   display: inline-block;
-  width: 50%;
-  text-align: center;
-    color: rgb(155, 155, 155);
+  width: 60px;
+  font-size: 15px;
+  color: rgb(155, 155, 155);
 }
 
 .main_write{
   display: inline-block;
   width: 50%;
   text-align: center;
-  color: rgb(155, 155, 155);
 }
 
 .main_delete{
   display: inline-block;
   width: 50%;
   text-align: center;
-  color: rgb(155, 155, 155);
 }
+
+/* .posting_comments{
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.posting_comments::before{
+  position: absolute;
+  width: .6rem;
+  height: 90%;
+  top: 50%;
+}
+
+.posting_comment::target .posting_comments{
+  max-height: 20rem;
+} */
 /*!******************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Comment.css ***!
   \******************************************************************************/
@@ -112,14 +129,14 @@ body {
   padding: 15px;
   margin-bottom: 20px;
   margin-top: 10px;
-  border-radius: 1px;
+  border-radius: 15px;
 }
 
 .comments_name{
   display: inline-block;
   width: 50%;
   color: rgb(189, 189, 189);
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .comments_date{
@@ -136,7 +153,7 @@ body {
   font-weight: 300;
   margin: 5px 5px 15px 5px;
   overflow-wrap: break-word;
-  color: rgb(213, 213, 213);
+  color: rgb(255, 255, 255);
 }
 
 .comments_like{
@@ -149,7 +166,7 @@ body {
 
 .comments_dislike{
   display: inline-block;
-  width: 100px;
+  width: 120px;
   color: rgb(189, 189, 189);
   font-size: 15px;
   margin-bottom: 10px;
@@ -165,19 +182,52 @@ body {
 
 .comments_write{
   display: inline-block;
-  width: 50%;
+  width: 49%;
   text-align: center;
   margin: 10px 0 0 0;
   color: rgb(189, 189, 189);
+  border-right: 1px solid white;
 }
 
 .comments_delete{
   display: inline-block;
-  width: 50%;
+  width: 49%;
   text-align: center;
   margin: 10px 0 5px 0;
   color: rgb(189, 189, 189);
 }
+
+.writeReview_modal {
+  position:fixed;
+  background-color: rgb(191, 191, 191);
+  width: 50%;
+  max-height: 90%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border-radius: 8px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.writeReview_inside_model {
+  background-color: white;
+  width: 92%;
+  max-height: 95%;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Reply.css ***!
   \****************************************************************************/
@@ -187,7 +237,7 @@ body {
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
-  border-radius: 1px;
+  border-radius: 10px;
 }
 
 .reply_name{
@@ -218,7 +268,7 @@ body {
 
 .reply_dislike{
   display: inline-block;
-  width: 100px;
+  width: 110px;
   color: rgb(91, 91, 91);
   font-size: 15px;
 }
@@ -228,6 +278,161 @@ body {
   width: 80px;
   color: rgb(91, 91, 91);
   font-size: 15px;
+}
+
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/WriteReply.css ***!
+  \*********************************************************************************/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.writeReply_modal {
+  position:fixed;
+  background-color: rgb(67, 67, 67);
+  width: 50%;
+  max-height: 90%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border-radius: 8px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.writeReply_inside_model {
+  background-color: rgb(35, 35, 35);
+  width: 92%;
+  max-height: 95%;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.writeReply_title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 1px;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.writeReplyButton_wrappers {
+  text-align: center;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.writeReplyButton_divider {
+  display: inline-block;
+  margin: 10px;
+}
+
+.writeReplyButton {
+  width: 150px;
+  height: 55px;
+  font-size: 18px;
+  background-color: white;
+  color: rgb(50, 50, 50);
+  cursor: pointer;
+}
+
+.writeReplyButton:hover {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  transition: .3s ease;
+}
+/*!***********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/WriteComment.css ***!
+  \***********************************************************************************/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.writeComment_modal {
+  position:fixed;
+  background-color: rgb(67, 67, 67);
+  width: 50%;
+  max-height: 90%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  border-radius: 8px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.writeComment_inside_model {
+  background-color: rgb(35, 35, 35);
+  width: 92%;
+  max-height: 95%;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.writeComment_title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 1px;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.writeCommentButton_wrappers {
+  text-align: center;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.writeCommentButton_divider {
+  display: inline-block;
+  margin: 10px;
+}
+
+.writeCommentButton {
+  width: 150px;
+  height: 55px;
+  font-size: 18px;
+  background-color: white;
+  color: rgb(50, 50, 50);
+  cursor: pointer;
+}
+
+.writeCommentButton:hover {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  transition: .3s ease;
 }
 /*!**************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/App.css ***!

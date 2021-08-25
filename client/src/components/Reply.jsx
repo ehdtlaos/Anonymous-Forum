@@ -4,11 +4,11 @@ import './Reply.css';
 
 function Reply({id}) {
   const [currentReply, setCurrentReply] = useState(null);
-  console.log(id);
+
   const getReply = async (comment_id) => {
     try {
       const fetchReply = await axios.get(`/posting/${comment_id}/reply`);
-      console.log(fetchReply);
+
       if (fetchReply.data !== undefined) {
         setCurrentReply(fetchReply.data);
       } else{
@@ -23,8 +23,6 @@ function Reply({id}) {
     getReply(id)
   }, [])
 
-  console.log(currentReply);
-
   if (currentReply !== null && currentReply !== 'none') {
     return (
       <div className="reply_main">
@@ -34,8 +32,8 @@ function Reply({id}) {
             <div className="reply_name">{reply.reply_nick_name}</div>
             <div className="reply_date">{reply.reply_created ?? 'Aug 24, 2021'}</div>
             <div className="reply_body">{reply.reply_body}</div>
-            <div className="reply_like">Like: {reply.reply_like ?? 0}</div>
-            <div className="reply_dislike">Dislike: {reply.reply_dislike ?? 0}</div>
+            <div className="reply_like">{reply.reply_like ?? 0} likes</div>
+            <div className="reply_dislike">{reply.reply_dislike ?? 0} dislikes</div>
             <div className="reply_delete">Delete</div>
           </div>
           ) : null

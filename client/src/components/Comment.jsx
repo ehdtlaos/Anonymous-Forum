@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Comment.css';
 import Reply from './Reply.jsx';
+import WriteReply from './WriteReply.jsx';
 
-function Comment({post}) {
+function Comment({post, show}) {
   const [currentComment, setCurrentComment] = useState(null);
+  const [writeReplyShow, setWriteReplyShow] = useState(false);
+
+  const viewReplyComments = () => {
+    writeReplyShow ? setWriteReplyShow(false) : setWriteReplyShow(true);
+  }
 
   const getComment = async (id) => {
     try {
@@ -23,7 +29,15 @@ function Comment({post}) {
     getComment(post)
   }, [])
 
-  console.log(currentComment);
+  useEffect(() => {
+    if (show === true) {
+      for (let i = 0; i < currentComment.length; i++) {
+        if (post === currentComment[i].post_id) {
+          currentComment[i].comment_show = true;
+        }
+      }
+    }
+  }, [show])
 
   if (currentComment !== null && currentComment !== 'none') {
     return (
@@ -34,12 +48,13 @@ function Comment({post}) {
             <div className="comments_name">{comments.comment_nick_name}</div>
             <div className="comments_date">{comments.comment_created ?? 'Aug 24, 2021'}</div>
             <div className="comments_body">{comments.comment_body}</div>
-            <div className="comments_like">Like: {comments.comment_like ?? 0}</div>
-            <div className="comments_dislike">Dislike: {comments.comment_dislike ?? 0}</div>
+            <div className="comments_like">{comments.comment_like ?? 0} likes</div>
+            <div className="comments_dislike">{comments.comment_dislike ?? 0} dislikes</div>
             <div className="comments_reply">Reply</div>
             <Reply id={comments.comment_id} />
-            <div className="comments_write">write</div>
+            <div className="comments_write" onClick={() => {viewReplyComments()}}>write</div>
             <div className="comments_delete">delete</div>
+            <WriteReply handleClose={viewReplyComments} show={writeReplyShow} comment={comments.comment_id} />
           </div>
           ) : null
         ))}

@@ -20,7 +20,7 @@ const getPost = async (page, count, callback) => {
 };
 
 const getPostComment = async (post_id, callback) => {
-  const queryString = `SELECT comment_id, post_id, comment_nick_name, comment_body, comment_like, comment_dislike, comment_created FROM comment WHERE comment_delete = false AND post_id = ${post_id}`
+  const queryString = `SELECT comment_id, post_id, comment_nick_name, comment_body, comment_like, comment_show, comment_dislike, comment_created FROM comment WHERE comment_delete = false AND post_id = ${post_id}`
   await pool.query(queryString, (err, res) => {
     if (err) {
       console.log(err);
@@ -30,7 +30,7 @@ const getPostComment = async (post_id, callback) => {
 }
 
 const getPostCommentReply = async (comment_id, callback) => {
-  const queryString = `SELECT reply_id, comment_id, reply_nick_name, reply_body, reply_created, reply_like, reply_dislike FROM commentreply WHERE reply_delete = false AND comment_id = ${comment_id}`;
+  const queryString = `SELECT reply_id, comment_id, reply_nick_name, reply_body, reply_created, reply_show, reply_like, reply_dislike FROM commentreply WHERE reply_delete = false AND comment_id = ${comment_id}`;
   await pool.query(queryString, (err, res) => {
     if (err) {
       console.log(err);

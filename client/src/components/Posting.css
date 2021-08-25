@@ -1,20 +1,23 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
   background: #67a5d4;
 }
 
+.main_postings{
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
 .postings{
   position: relative;
+  margin-left: 30%;
   width: 500px;
   background: rgb(35, 35, 35);
   box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);

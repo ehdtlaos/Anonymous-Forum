@@ -41,7 +41,7 @@ function Posting() {
     )
   } else {
     return (
-      <div>loading...</div>
+      <div className="main_postings">loading...</div>
     )
   }
 }

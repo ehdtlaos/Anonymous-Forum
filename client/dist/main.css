@@ -13,9 +13,8 @@ body {
 }
 
 .main_postings{
-  display: block;
-  justify-content: center;
-  align-items: center;
+  display:block;
+  margin: 0 auto;
 }
 
 .postings{
@@ -42,7 +41,7 @@ body {
   text-align: right;
   color: rgb(155, 155, 155);
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .postings_title{
@@ -109,58 +108,59 @@ body {
   \******************************************************************************/
 .comments{
   position: relative;
-  background: rgb(184, 184, 184);
-  padding: 20px;
+  background: rgb(70, 70, 70);
+  padding: 15px;
   margin-bottom: 20px;
   margin-top: 10px;
-  border-radius: 0px;
+  border-radius: 1px;
 }
 
 .comments_name{
   display: inline-block;
   width: 50%;
-  color: rgb(91, 91, 91);
-  font-size: 15px;
+  color: rgb(189, 189, 189);
+  font-size: 10px;
 }
 
 .comments_date{
   display: inline-block;
   width: 50%;
   text-align: right;
-  color: rgb(91, 91, 91);
+  color: rgb(189, 189, 189);
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .comments_body{
   font-size: 17px;
   font-weight: 300;
-  margin: 5px 5px 20px 5px;
+  margin: 5px 5px 15px 5px;
   overflow-wrap: break-word;
+  color: rgb(213, 213, 213);
 }
 
 .comments_like{
   display: inline-block;
   width: 80px;
-  color: rgb(91, 91, 91);
+  color: rgb(189, 189, 189);
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .comments_dislike{
   display: inline-block;
   width: 100px;
-  color: rgb(91, 91, 91);
+  color: rgb(189, 189, 189);
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .comments_reply{
   display: inline-block;
   width: 80px;
-  color: rgb(91, 91, 91);
+  color: rgb(189, 189, 189);
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .comments_write{
@@ -168,6 +168,7 @@ body {
   width: 50%;
   text-align: center;
   margin: 10px 0 0 0;
+  color: rgb(189, 189, 189);
 }
 
 .comments_delete{
@@ -175,6 +176,7 @@ body {
   width: 50%;
   text-align: center;
   margin: 10px 0 5px 0;
+  color: rgb(189, 189, 189);
 }
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Reply.css ***!
@@ -182,10 +184,10 @@ body {
 .replies  {
   position: relative;
   background: rgb(169, 169, 169);
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
-  border-radius: 0px;
+  border-radius: 1px;
 }
 
 .reply_name{

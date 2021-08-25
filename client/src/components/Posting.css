@@ -10,9 +10,8 @@ body {
 }
 
 .main_postings{
-  display: block;
-  justify-content: center;
-  align-items: center;
+  display:block;
+  margin: 0 auto;
 }
 
 .postings{
@@ -39,7 +38,7 @@ body {
   text-align: right;
   color: rgb(155, 155, 155);
   font-size: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .postings_title{

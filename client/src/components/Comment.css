@@ -62,6 +62,7 @@
   margin: 10px 0 0 0;
   color: rgb(189, 189, 189);
   border-right: 1px solid white;
+  cursor: pointer;
 }
 
 .comments_delete{
@@ -70,6 +71,7 @@
   text-align: center;
   margin: 10px 0 5px 0;
   color: rgb(189, 189, 189);
+  cursor: pointer;
 }
 
 .writeReview_modal {

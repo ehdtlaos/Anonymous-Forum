@@ -10,13 +10,13 @@ body {
 }
 
 .main_postings{
-  display:block;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 30px;
 }
 
 .postings{
   position: relative;
-  margin-left: 30%;
+  margin: auto;
   width: 500px;
   background: rgb(35, 35, 35);
   box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);
@@ -80,6 +80,7 @@ body {
   width: 60px;
   font-size: 15px;
   color: rgb(155, 155, 155);
+  cursor: pointer;
 }
 
 .postings_delete{
@@ -87,18 +88,27 @@ body {
   width: 60px;
   font-size: 15px;
   color: rgb(155, 155, 155);
+  cursor: pointer;
 }
 
-.main_write{
-  display: inline-block;
-  width: 50%;
+.main_write {
+  margin: auto;
+  padding: 25px;
+  width: 490px;
+  font-size: 18px;
   text-align: center;
+  background: rgb(35, 35, 35);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 100px;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);
 }
 
-.main_delete{
-  display: inline-block;
-  width: 50%;
-  text-align: center;
+.main_write:hover {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  transition: .3s ease;
 }
 
 /* .posting_comments{

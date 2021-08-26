@@ -5,7 +5,8 @@ const app = express();
 
 module.exports = {
   writePost: (req, res) => {
-    db.writePosts((err, result) => {
+    const { nickName, password, title, body } = req.body
+    db.writePosts(nickName, password, title, body, (err, result) => {
       if (err) {
         res.status(400);
         console.log(err);
@@ -16,8 +17,8 @@ module.exports = {
   },
 
   writeComment: (req, res) => {
-    const { post_id } = req.params;
-    db.writeComments(post_id, (err, result) => {
+    const { post_id, nickName, password, body } = req.body;
+    db.writeComments(post_id, nickName, password, body, (err, result) => {
       if (err) {
         res.status(400)
         console.log(err);
@@ -28,8 +29,8 @@ module.exports = {
   },
 
   writeReply: (req, res) => {
-    let { comment_id } = req.params;
-    db.writeReplys(comment_id, (err, result) => {
+    let { comment_id, nickName, password, body } = req.body;
+    db.writeReplys(comment_id, nickName, password, body, (err, result) => {
       if (err) {
         res.status(400);
         console.log(err);

@@ -9,8 +9,8 @@ router.put(`/delete/post/:post_id`, controller.delete.deletePost)
 router.put(`/delete/comment/:comment_id`, controller.delete.deleteComment)
 router.put(`/delete/reply/:reply_id`, controller.delete.deleteReply)
 
-router.post(`write/post/`, controller.write.writePost)
-router.post(`write/comment/:post_id`, controller.write.writeComment)
-router.post(`write/reply/:comment_id`, controller.write.writeReply)
+router.post(`/write/post`, controller.write.writePost)
+router.post(`/write/comment/:post_id`, controller.write.writeComment)
+router.post(`/write/reply/:comment_id`, controller.write.writeReply)
 
 module.exports = router;

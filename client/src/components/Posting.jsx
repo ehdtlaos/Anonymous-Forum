@@ -9,7 +9,7 @@ function Posting() {
   const [currentPosting, setCurrentPosting] = useState(null);
   const [writeCommentShow, setWriteCommentShow] = useState(false);
   const [writePostShow, setWritePostShow] = useState(false);
-  console.log(writePostShow)
+
   const viewPostComments = () => {
     writePostShow ? setWritePostShow(false) : setWritePostShow(true);
   }
@@ -34,6 +34,8 @@ function Posting() {
   if (currentPosting !== null) {
     return (
       <div className="main_postings">
+        <div className="main_write" onClick={() => {viewPostComments()}}>WRITE</div>
+        <WritePost show={writePostShow} handleClose={viewPostComments} />
         {currentPosting.map((post) => (
           <div className="postings" key={post.post_id}>
             <div className="postings_name">{post.post_nick_name}</div>
@@ -48,9 +50,6 @@ function Posting() {
             <WriteComment show={writeCommentShow} post={post.post_id} handleClose={viewWriteComments} />
           </div>
         ))}
-        <div className="main_write">write</div>
-        <WritePost show={writePostShow} handleClose={viewPostComments} />
-        <div className="main_delete">delete</div>
       </div>
     )
   } else {

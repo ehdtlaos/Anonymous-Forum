@@ -1,4 +1,4 @@
-.modal {
+/* .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
   z-index: 99;
 }
 
-.writeReply_modal {
+.writePost_modal {
   position:fixed;
   background-color: rgb(67, 67, 67);
   width: 50%;
@@ -19,10 +19,11 @@
   padding: 10px;
   border-radius: 8px;
   overflow-y: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-.writeReply_inside_model {
+.writePost_inside_model {
   background-color: rgb(35, 35, 35);
   width: 92%;
   max-height: 95%;
@@ -39,7 +40,7 @@
   display: none;
 }
 
-.writeReply_title {
+.writePost_title {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -48,18 +49,18 @@
   text-align: center;
 }
 
-.writeReplyButton_wrappers {
+.writePostButton_wrappers {
   text-align: center;
   margin-left: 15px;
   margin-bottom: 10px;
 }
 
-.writeReplyButton_divider {
+.writePostButton_divider {
   display: inline-block;
   margin: 10px;
 }
 
-.writeReplyButton {
+.writePostButton {
   width: 150px;
   height: 55px;
   font-size: 18px;
@@ -68,21 +69,20 @@
   cursor: pointer;
   margin-top: 15px;
 }
-
-.writeReplyButton:hover {
+.writePostButton:hover {
   background-color: rgb(50, 50, 50);
   color: white;
   transition: .3s ease;
 }
 
-.writeReplyNickName {
+.writePostNickName {
   margin-bottom: 5px;
   display: flex;
   align-items: center;
   margin-top: 10px
 }
 
-.writeReplyNickName_label {
+.writePostNickName_label {
   width: 300px;
   color: #ffffff;
   margin-right: 10px;
@@ -91,7 +91,7 @@
   margin-bottom: 1px;
 }
 
-#writeReplyNickName_input {
+#writePostNickName_input {
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
@@ -101,14 +101,14 @@
   transition: all 0.3s ease;
 }
 
-.writeReplyPassword {
+.writePostPassword {
   margin-bottom: 5px;
   display: flex;
   align-items: center;
   margin-top: 10px
 }
 
-.writeReplyPassword_label {
+.writePostPassword_label {
   width: 300px;
   color: #ffffff;
   margin-right: 10px;
@@ -117,7 +117,7 @@
   margin-bottom: 1px;
 }
 
-#writeReplyPassword_input {
+#writePostPassword_input {
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
@@ -127,14 +127,40 @@
   transition: all 0.3s ease;
 }
 
-.writeReplyBody {
+.writePostTitle {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px
+}
+
+.writePostTitle_label {
+  width: 300px;
+  color: #ffffff;
+  margin-right: 10px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 1px;
+}
+
+#writePostTitle_input {
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.writePostBody {
   margin-bottom: 2px;
   display: flex;
   align-items: center;
   margin-top: 10px
 }
 
-.writeReplyBody_label {
+.writePostBody_label {
   width: 300px;
   color: #ffffff;
   margin-right: 10px;
@@ -143,7 +169,7 @@
   margin-bottom: 1px;
 }
 
-#writeReplyBody_input {
+#writePostBody_input {
   width: 100%;
   outline: none;
   border: 1px solid #d5dbd9;
@@ -153,4 +179,4 @@
   transition: all 0.3s ease;
   resize: none;
   height: 125px;
-}
+} */

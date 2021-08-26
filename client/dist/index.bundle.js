@@ -12018,8 +12018,6 @@ function Posting() {
       writePostShow = _useState6[0],
       setWritePostShow = _useState6[1];
 
-  console.log(writePostShow);
-
   var viewPostComments = function viewPostComments() {
     writePostShow ? setWritePostShow(false) : setWritePostShow(true);
   };
@@ -12070,7 +12068,15 @@ function Posting() {
   if (currentPosting !== null) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
       className: "main_postings"
-    }, currentPosting.map(function (post) {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: "main_write",
+      onClick: function onClick() {
+        viewPostComments();
+      }
+    }, "WRITE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_WritePost_jsx__WEBPACK_IMPORTED_MODULE_8__.default, {
+      show: writePostShow,
+      handleClose: viewPostComments
+    }), currentPosting.map(function (post) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "postings",
         key: post.post_id
@@ -12100,14 +12106,7 @@ function Posting() {
         post: post.post_id,
         handleClose: viewWriteComments
       }));
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "main_write"
-    }, "write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_WritePost_jsx__WEBPACK_IMPORTED_MODULE_8__.default, {
-      show: writePostShow,
-      handleClose: viewPostComments
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "main_delete"
-    }, "delete"));
+    }));
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
       className: "main_postings"
@@ -12236,11 +12235,13 @@ function Reply(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WriteComment.css */ "./src/components/WriteComment.css");
-/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_WriteComment_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WriteComment.css */ "./src/components/WriteComment.css");
+/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_WriteComment_css__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -12249,26 +12250,94 @@ function WriteComment(_ref) {
   var show = _ref.show,
       post = _ref.post,
       handleClose = _ref.handleClose;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
+      nickName = _useState2[0],
+      setNickName = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState5, 2),
+      body = _useState6[0],
+      setBody = _useState6[1];
+
   var showHideWriteComment = show ? "modal display-block" : "modal display-none";
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+
+  var updateBody = function updateBody(e) {
+    setBody(e.target.value);
+  };
+
+  var updatePassword = function updatePassword(e) {
+    setPassword(e.target.value);
+  };
+
+  var updateNickname = function updateNickname(e) {
+    setNickName(e.target.value);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: showHideWriteComment
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "writeComment"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("section", {
     className: "writeComment_modal"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "writeComment_inside_model"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "writeComment_title"
-  }, "Write Comment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, "Write Comment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeCommentNickName"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+    htmlFor: "writCommentNickName_input",
+    className: "writeCommentNickName_label"
+  }, "What is your nickname *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    type: "text",
+    name: "writeNickname",
+    onChange: updateNickname,
+    placeholder: "Example: Brian",
+    maxLength: "60",
+    id: "writeCommentNickName_input",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeCommentPassword"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+    htmlFor: "writCommentNickPassword_input",
+    className: "writeCommentPassword_label"
+  }, "What is your Password *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    type: "password",
+    name: "writeCommentPassword",
+    onChange: updatePassword,
+    placeholder: "Password to delete your post",
+    maxLength: "60",
+    id: "writeCommentPassword_input",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeCommentBody"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+    className: "writeCommentBody_label",
+    htmlFor: "writeCommentBody_input"
+  }, "Post Body *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("textarea", {
+    type: "text",
+    name: "postBody",
+    id: "writeCommentBody_input",
+    onChange: updateBody,
+    maxLength: "1000",
+    placeholder: "Example: Brian is off to grocery store!",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "writeCommentButton_wrappers"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "submit",
     value: "Submit",
     className: "writeCommentButton"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "writeCommentButton_divider"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     type: "button",
     className: "writeCommentButton",
     onClick: handleClose
@@ -12287,11 +12356,18 @@ function WriteComment(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WriteComment.css */ "./src/components/WriteComment.css");
-/* harmony import */ var _WriteComment_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_WriteComment_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _WritePost_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WritePost.css */ "./src/components/WritePost.css");
+/* harmony import */ var _WritePost_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_WritePost_css__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
 
 
 
@@ -12299,30 +12375,162 @@ __webpack_require__.r(__webpack_exports__);
 function WritePost(_ref) {
   var show = _ref.show,
       handleClose = _ref.handleClose;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
+      nickName = _useState2[0],
+      setNickName = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
+      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
+      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState5, 2),
+      title = _useState6[0],
+      setTitle = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
+      _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState7, 2),
+      body = _useState8[0],
+      setBody = _useState8[1];
+
   var showHideWritePost = show ? "modal display-block" : "modal display-none";
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+
+  var updateTitle = function updateTitle(e) {
+    setTitle(e.target.value);
+  };
+
+  var updateBody = function updateBody(e) {
+    setBody(e.target.value);
+  };
+
+  var updatePassword = function updatePassword(e) {
+    setPassword(e.target.value);
+  };
+
+  var updateNickname = function updateNickname(e) {
+    setNickName(e.target.value);
+  };
+
+  var createPosting = /*#__PURE__*/function () {
+    var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee() {
+      var post;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              post = {
+                nickName: nickName,
+                password: password,
+                title: title,
+                body: body
+              };
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().post('/write/post', post);
+
+            case 4:
+              console.log('successfully created a post');
+              _context.next = 10;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              console.log('error when creating posting data');
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+
+    return function createPosting() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
     className: showHideWritePost
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
     className: "writePost"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("section", {
     className: "writePost_modal"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
     className: "writePost_inside_model"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
     className: "writePost_title"
-  }, "Write Post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "writeReviewButton_wrappers"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, "Write Post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("form", {
+    onSubmit: createPosting
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "writePostNickName"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
+    htmlFor: "writPostNickName_input",
+    className: "writePostNickName_label"
+  }, "What is your nickname *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
+    type: "text",
+    name: "writeNickname",
+    onChange: updateNickname,
+    placeholder: "Example: Ubin",
+    maxLength: "60",
+    id: "writePostNickName_input",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "writePostPassword"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
+    htmlFor: "writPostNickPassword_input",
+    className: "writePostPassword_label"
+  }, "What is your Password *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
+    type: "password",
+    name: "writePassword",
+    onChange: updatePassword,
+    placeholder: "Password to delete your post",
+    maxLength: "60",
+    id: "writePostPassword_input",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "writePostTitle"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
+    htmlFor: "writPostTitle_input",
+    className: "writePostTitle_label"
+  }, "What is your title *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
+    type: "text",
+    name: "writeTitle",
+    onChange: updateTitle,
+    placeholder: "Example: Ubin is late again",
+    maxLength: "250",
+    id: "writePostTitle_input",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "writePostBody"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
+    className: "writePostBody_label",
+    htmlFor: "writePostBody_input"
+  }, "Post Body *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("textarea", {
+    type: "text",
+    name: "postBody",
+    id: "writePostBody_input",
+    onChange: updateBody,
+    maxLength: "1000",
+    placeholder: "Example: She missed morning kickoff!",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "writePostButton_wrappers"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
     type: "submit",
     value: "Submit",
-    className: "writeReviewButton"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "writeReviewButton_divider"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "writePostButton"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "writePostButton_divider"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", {
     type: "button",
-    className: "writeReviewButton",
+    className: "writePostButton",
     onClick: handleClose
-  }, "Close"))))));
+  }, "Close")))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (WritePost);
@@ -12337,11 +12545,13 @@ function WritePost(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _WriteReply_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WriteReply.css */ "./src/components/WriteReply.css");
-/* harmony import */ var _WriteReply_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_WriteReply_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _WriteReply_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WriteReply.css */ "./src/components/WriteReply.css");
+/* harmony import */ var _WriteReply_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_WriteReply_css__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -12350,26 +12560,94 @@ function WriteReply(_ref) {
   var show = _ref.show,
       comment = _ref.comment,
       handleClose = _ref.handleClose;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
+      nickName = _useState2[0],
+      setNickName = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState5, 2),
+      body = _useState6[0],
+      setBody = _useState6[1];
+
   var showHideWriteReply = show ? "modal display-block" : "modal display-none";
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+
+  var updateBody = function updateBody(e) {
+    setBody(e.target.value);
+  };
+
+  var updatePassword = function updatePassword(e) {
+    setPassword(e.target.value);
+  };
+
+  var updateNickname = function updateNickname(e) {
+    setNickName(e.target.value);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: showHideWriteReply
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "WriteReply"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
-    className: "WriteReply_modal"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "WriteReply_inside_model"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "WriteReply_title"
-  }, "Write Reply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeReply"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("section", {
+    className: "writeReply_modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeReply_inside_model"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeReply_title"
+  }, "Write Reply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeReplyNickName"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+    htmlFor: "writReplyNickName_input",
+    className: "writeReplyNickName_label"
+  }, "What is your nickname *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    type: "text",
+    name: "writeNickname",
+    onChange: updateNickname,
+    placeholder: "Example: Corey",
+    maxLength: "60",
+    id: "writeReplyNickName_input",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeReplyPassword"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+    htmlFor: "writReplyPassword_input",
+    className: "writeReplyPassword_label"
+  }, "What is your Password *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    type: "password",
+    name: "writeReplyPassword",
+    onChange: updatePassword,
+    placeholder: "Password to delete your reply",
+    maxLength: "60",
+    id: "writeReplyPassword_input",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "writeReplyBody"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+    className: "writeReplyBody_label",
+    htmlFor: "writeReplyBody_input"
+  }, "Reply Body *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("textarea", {
+    type: "text",
+    name: "replyBody",
+    id: "writeReplyBody_input",
+    onChange: updateBody,
+    maxLength: "1000",
+    placeholder: "Example: He speaks Chinese and did his skit in Chinese. Someone find that link!",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "writeReplyButton_wrappers"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "submit",
     value: "Submit",
     className: "writeReplyButton"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "writeReplyButton_divider"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     type: "button",
     className: "writeReplyButton",
     onClick: handleClose
@@ -12500,6 +12778,27 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "// extracted by mini-css-extract-plugin\nexport {};", "",{"version":3,"sources":["webpack://src/components/WriteComment.css"],"names":[],"mappings":"AAAA;QACQ,CAAA","sourcesContent":["// extracted by mini-css-extract-plugin\nexport {};"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WritePost.css":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WritePost.css ***!
+  \************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "// extracted by mini-css-extract-plugin\nexport {};", "",{"version":3,"sources":["webpack://src/components/WritePost.css"],"names":[],"mappings":"AAAA;QACQ,CAAA","sourcesContent":["// extracted by mini-css-extract-plugin\nexport {};"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -44334,6 +44633,34 @@ module.exports = content.locals || {};
 
 var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
             var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js!./WriteComment.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WriteComment.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.id, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/components/WritePost.css":
+/*!**************************************!*\
+  !*** ./src/components/WritePost.css ***!
+  \**************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js!./WritePost.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/WritePost.css");
 
             content = content.__esModule ? content.default : content;
 

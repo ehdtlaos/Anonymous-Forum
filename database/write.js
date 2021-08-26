@@ -9,8 +9,8 @@ const pool = new Pool({
   port: 5432,
 });
 
-const writePosts = async (callback) => {
-  const queryString = ``
+const writePosts = async (nickName, password, title, body, callback) => {
+  const queryString = `INSERT INTO `
   await pool.query(queryString, (err, res) => {
     if (err) {
       console.log(err);

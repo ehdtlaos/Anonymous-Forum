@@ -6,7 +6,7 @@ import WriteReply from './WriteReply.jsx';
 import moment from 'moment';
 import DeleteComment from './DeleteComment.jsx';
 
-function Comment({post, show}) {
+function Comment({post, show, showPostId}) {
   const [currentComment, setCurrentComment] = useState(null);
   const [writeReplyShow, setWriteReplyShow] = useState(false);
   const [comment_key, setComment_key] = useState(null);

@@ -11813,7 +11813,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function Comment(_ref) {
   var post = _ref.post,
-      show = _ref.show;
+      show = _ref.show,
+      showPostId = _ref.showPostId;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),

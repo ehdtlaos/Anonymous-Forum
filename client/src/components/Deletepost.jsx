@@ -10,7 +10,6 @@ function DeletePost({show, handleClose, postId}) {
   const updatePassword = (e) => {
     setPassword(e.target.value)
   }
-
   const deletePosting = async () => {
     try {
       const post = {

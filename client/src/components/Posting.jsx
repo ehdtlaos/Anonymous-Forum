@@ -23,6 +23,7 @@ function Posting() {
   }
 
   const toRight = () => {
+    if (currentPosting.length > 0)
     setCurrentPage(currentPage + 1)
   }
 

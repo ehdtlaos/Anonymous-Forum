@@ -12444,7 +12444,7 @@ function Posting() {
   };
 
   var toRight = function toRight() {
-    setCurrentPage(currentPage + 1);
+    if (currentPosting.length > 0) setCurrentPage(currentPage + 1);
   };
 
   var viewDeletePost = function viewDeletePost(id) {

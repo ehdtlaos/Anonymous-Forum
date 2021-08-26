@@ -4,11 +4,19 @@ import './Comment.css';
 import Reply from './Reply.jsx';
 import WriteReply from './WriteReply.jsx';
 import moment from 'moment';
+import DeleteComment from './DeleteComment.jsx';
 
 function Comment({post, show}) {
   const [currentComment, setCurrentComment] = useState(null);
   const [writeReplyShow, setWriteReplyShow] = useState(false);
   const [comment_key, setComment_key] = useState(null);
+  const [deletePostShow, setDeleteCommentShow] = useState(false);
+  const [currentCommentId, setCurrentCommentId] = useState(false);
+
+  const viewDeleteComment = (id) => {
+    deletePostShow ? setDeleteCommentShow(false) : setDeleteCommentShow(true);
+    setCurrentCommentId(id);
+  }
 
   const viewReplyComments = (id) => {
     setComment_key(id);
@@ -55,8 +63,9 @@ function Comment({post, show}) {
             <div className="comments_dislike">{comments.comment_dislike ?? 0} dislikes</div>
             <Reply id={comments.comment_id} />
             <div className="comments_write" onClick={() => {viewReplyComments(comments.comment_id)}}>write</div>
-            <div className="comments_delete">delete</div>
+            <div className="comments_delete" onClick={() => {viewDeleteComment(comments.comment_id)}}>delete</div>
             <WriteReply handleClose={viewReplyComments} show={writeReplyShow} comment={comment_key} />
+            <DeleteComment show={deletePostShow} handleClose={viewDeleteComment} commentId={currentCommentId}/>
           </div>
           ) : null
         ))}

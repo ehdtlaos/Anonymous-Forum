@@ -14,6 +14,17 @@ function Posting() {
   const [commentId, setCommentId] = useState(null);
   const [deletePostShow, setDeletePostShow] = useState(false);
   const [postId, setPostId] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const toLeft = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  const toRight = () => {
+    setCurrentPage(currentPage + 1)
+  }
 
   const viewDeletePost = (id) => {
     deletePostShow ? setDeletePostShow(false) : setDeletePostShow(true);
@@ -31,7 +42,7 @@ function Posting() {
 
   const getPosting = async () => {
     try {
-      const fetchPosting = await axios.get('/posting');
+      const fetchPosting = await axios.get(`/posting/?page=${currentPage}&count=10`);
       setCurrentPosting(fetchPosting.data);
     } catch(e) {
       console.log('error when fetching posting data');
@@ -42,10 +53,22 @@ function Posting() {
     getPosting();
   }, [])
 
+  useEffect(() => {
+    getPosting();
+  }, [currentPage])
+
   if (currentPosting !== null) {
     return (
       <div className="main_postings">
+        <div className="main_together">
+        <div className="main_before" onClick={() => {
+          toLeft()
+        }}>Left</div>
         <div className="main_write" onClick={() => {viewPostComments()}}>WRITE</div>
+        <div className="main_after" onClick={() => {
+          toRight()
+        }}>Right</div>
+        </div>
         <WritePost show={writePostShow} handleClose={viewPostComments} />
         {currentPosting.map((post) => (
           <div className="postings" key={post.post_id}>

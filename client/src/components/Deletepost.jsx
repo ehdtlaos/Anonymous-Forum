@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './DeletePost.css';
 
-function WritePost({show, handleClose, postId}) {
+function DeletePost({show, handleClose, postId}) {
   const [password, setPassword] = useState(null);
 
-  const showHideWritePost = show ? "modal display-block" : "modal display-none";
+  const showHideDeletePost = show ? "modal display-block" : "modal display-none";
 
   const updatePassword = (e) => {
     setPassword(e.target.value)
   }
 
-  console.log(password);
-  console.log(postId);
   const deletePosting = async () => {
     try {
       const post = {
@@ -27,7 +25,7 @@ function WritePost({show, handleClose, postId}) {
 
 
   return (
-    <div className={showHideWritePost}>
+    <div className={showHideDeletePost}>
       <div className="deletePost">
         <section className="deletePost_modal">
           <div className="deletePost_inside_model" >
@@ -55,4 +53,4 @@ function WritePost({show, handleClose, postId}) {
   )
 }
 
-export default WritePost;
+export default DeletePost;

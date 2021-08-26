@@ -91,10 +91,57 @@ body {
   cursor: pointer;
 }
 
-.main_write {
+.main_together{
   margin: auto;
+  text-align: center;
+}
+
+.main_before {
+  display: inline-block;
   padding: 25px;
-  width: 490px;
+  width: 50px;
+  font-size: 18px;
+  text-align: center;
+  background: rgb(35, 35, 35);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 200px;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);
+}
+
+.main_before:hover {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  transition: .3s ease;
+}
+
+.main_after {
+  display: inline-block;
+  padding: 25px;
+  width: 50px;
+  font-size: 18px;
+  text-align: center;
+  background: rgb(35, 35, 35);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 200px;
+  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);
+}
+
+.main_after:hover {
+  background-color: rgb(50, 50, 50);
+  color: white;
+  transition: .3s ease;
+}
+
+
+.main_write {
+  display: inline-block;
+  padding: 25px;
+  width: 300px;
+  margin: 0 10px 0 10px;
   font-size: 18px;
   text-align: center;
   background: rgb(35, 35, 35);

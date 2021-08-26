@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './WriteReply.css'
 
@@ -21,6 +21,20 @@ function WriteReply({show, comment, handleClose}) {
     setNickName(e.target.value)
   }
 
+  const createReply = async () => {
+    try {
+      const reply = {
+        nickName: nickName,
+        password: password,
+        body: body
+      }
+      await axios.post(`/write/reply/${comment}`, reply);
+      console.log('successfully created a post')
+    } catch(e) {
+      console.log('error when creating posting data');
+    }
+  }
+
   return (
     <div className={showHideWriteReply}>
       <div className="writeReply">
@@ -31,7 +45,7 @@ function WriteReply({show, comment, handleClose}) {
             </div>
 
 
-
+            <form onSubmit={createReply}>
             <div className="writeReplyNickName">
               <label htmlFor="writReplyNickName_input" className="writeReplyNickName_label">
                What is your nickname *:
@@ -60,6 +74,7 @@ function WriteReply({show, comment, handleClose}) {
             <div className="writeReplyButton_divider" />
             <button type="button" className="writeReplyButton" onClick={handleClose}>Close</button>
             </div>
+            </form>
           </div>
         </section>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './WriteComment.css';
 
@@ -6,7 +6,7 @@ function WriteComment({show, post, handleClose}) {
   const [nickName, setNickName] = useState(null);
   const [password, setPassword] = useState(null);
   const [body, setBody] = useState(null);
-
+  
   const showHideWriteComment = show ? "modal display-block" : "modal display-none";
 
   const updateBody = (e) => {
@@ -22,6 +22,20 @@ function WriteComment({show, post, handleClose}) {
   }
 
 
+  const createComment = async () => {
+    try {
+      const comment = {
+        nickName: nickName,
+        password: password,
+        body: body
+      }
+      await axios.post(`/write/comment/${post}`, comment);
+      console.log('successfully created a post')
+    } catch(e) {
+      console.log('error when creating posting data');
+    }
+  }
+
   return (
     <div className={showHideWriteComment}>
       <div className="writeComment">
@@ -32,7 +46,7 @@ function WriteComment({show, post, handleClose}) {
             </div>
 
 
-
+            <form onSubmit={createComment}>
             <div className="writeCommentNickName">
               <label htmlFor="writCommentNickName_input" className="writeCommentNickName_label">
                What is your nickname *:
@@ -60,6 +74,7 @@ function WriteComment({show, post, handleClose}) {
             <div className="writeCommentButton_divider" />
             <button type="button" className="writeCommentButton" onClick={handleClose}>Close</button>
             </div>
+            </form>
           </div>
         </section>
       </div>

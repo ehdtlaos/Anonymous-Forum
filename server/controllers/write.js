@@ -17,7 +17,8 @@ module.exports = {
   },
 
   writeComment: (req, res) => {
-    const { post_id, nickName, password, body } = req.body;
+    const { post_id } = req.params;
+    const { nickName, password, body } = req.body;
     db.writeComments(post_id, nickName, password, body, (err, result) => {
       if (err) {
         res.status(400)
@@ -29,7 +30,8 @@ module.exports = {
   },
 
   writeReply: (req, res) => {
-    let { comment_id, nickName, password, body } = req.body;
+    const { comment_id } = req.params;
+    const { nickName, password, body } = req.body;
     db.writeReplys(comment_id, nickName, password, body, (err, result) => {
       if (err) {
         res.status(400);

@@ -3,12 +3,17 @@ import axios from 'axios';
 import './Comment.css';
 import Reply from './Reply.jsx';
 import WriteReply from './WriteReply.jsx';
+import moment from 'moment';
 
 function Comment({post, show}) {
   const [currentComment, setCurrentComment] = useState(null);
   const [writeReplyShow, setWriteReplyShow] = useState(false);
+  const [comment_key, setComment_key] = useState(null);
 
-  const viewReplyComments = () => {
+  console.log(comment_key)
+
+  const viewReplyComments = (id) => {
+    setComment_key(id);
     writeReplyShow ? setWriteReplyShow(false) : setWriteReplyShow(true);
   }
 
@@ -50,11 +55,11 @@ function Comment({post, show}) {
             <div className="comments_body">{comments.comment_body}</div>
             <div className="comments_like">{comments.comment_like ?? 0} likes</div>
             <div className="comments_dislike">{comments.comment_dislike ?? 0} dislikes</div>
-            <div className="comments_reply">Reply</div>
+            <div className="comments_reply" >Reply</div>
             <Reply id={comments.comment_id} />
-            <div className="comments_write" onClick={() => {viewReplyComments()}}>write</div>
+            <div className="comments_write" onClick={() => {viewReplyComments(comments.comment_id)}}>write</div>
             <div className="comments_delete">delete</div>
-            <WriteReply handleClose={viewReplyComments} show={writeReplyShow} comment={comments.comment_id} />
+            <WriteReply handleClose={viewReplyComments} show={writeReplyShow} comment={comment_key} />
           </div>
           ) : null
         ))}

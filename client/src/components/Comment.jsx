@@ -46,7 +46,7 @@ function Comment({post, show}) {
           (comments.post_id === post) ? (
           <div className="comments" key={comments.comment_id}>
             <div className="comments_name">{comments.comment_nick_name}</div>
-            <div className="comments_date">{comments.comment_created ?? 'Aug 24, 2021'}</div>
+            <div className="comments_date">{comments.comment_created ? moment(comments.comment_created).format("MMM Do YY"): 'Aug 24, 2021'}</div>
             <div className="comments_body">{comments.comment_body}</div>
             <div className="comments_like">{comments.comment_like ?? 0} likes</div>
             <div className="comments_dislike">{comments.comment_dislike ?? 0} dislikes</div>

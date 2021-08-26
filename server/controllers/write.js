@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../../database/database.js');
+const db = require('../../database/write.js');
 
 const app = express();
 
@@ -12,7 +12,7 @@ module.exports = {
         console.log(err);
       }
       res.status(200);
-      res.send(result);
+      res.end();
     })
   },
 
@@ -24,7 +24,7 @@ module.exports = {
         console.log(err);
       }
       res.status(200);
-      res.send(result);
+      res.end();
     })
   },
 
@@ -36,7 +36,7 @@ module.exports = {
         console.log(err);
       }
       res.status(200);
-      res.send(result);
+      res.end();
     })
   },
 

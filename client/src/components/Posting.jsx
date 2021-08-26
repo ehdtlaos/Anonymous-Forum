@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import './Posting.css';
 import Comment from './Comment.jsx'
 import WriteComment from './WriteComment.jsx';
@@ -39,7 +40,7 @@ function Posting() {
         {currentPosting.map((post) => (
           <div className="postings" key={post.post_id}>
             <div className="postings_name">{post.post_nick_name}</div>
-            <div className="postings_time">{post.post_created ? post.post_created: 'Aug 25, 2021'}</div>
+            <div className="postings_time">{post.post_created ?moment(post.post_created).format("MMM Do YY") : 'Aug 25, 2021'}</div>
             <div className="postings_title">{post.post_title}</div>
             <div className="postings_body">{post.post_body}</div>
             <div className="postings_like">{post.post_upvote ? post.post_upvote: 0} likes</div>

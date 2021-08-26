@@ -10,12 +10,9 @@ const pool = new Pool({
 });
 
 const writePosts = async (nickName, password, title, body, callback) => {
-  const queryString = `INSERT INTO `
+  const queryString = `INSERT INTO post (post_nick_name, post_password, post_title, post_body, post_created) VALUES (${nickName}, ${password}, ${title}, ${body}, NOW())`
   await pool.query(queryString, (err, res) => {
-    if (err) {
-      console.log(err);
-    }
-    callback(null, res.rows);
+    pool.end();
   });
 };
 

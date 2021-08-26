@@ -60,6 +60,12 @@ function Posting() {
   if (currentPosting !== null) {
     return (
       <div className="main_postings">
+        <div className="notice_together">
+          <div className="notice">
+            Notice*: Anonymous Forum is still under a development.
+            Functionalities that are still under development: like, dislike, search, clickable page number
+          </div>
+        </div>
         <div className="main_together">
         <div className="main_before" onClick={() => {
           toLeft()

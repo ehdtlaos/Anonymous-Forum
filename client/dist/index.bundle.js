@@ -12507,6 +12507,10 @@ function Posting() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
       className: "main_postings"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: "notice_together"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: "notice"
+    }, "Notice*: Anonymous Forum is still under a development. Functionalities that are still under development: like, dislike, search, clickable page number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
       className: "main_together"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
       className: "main_before",

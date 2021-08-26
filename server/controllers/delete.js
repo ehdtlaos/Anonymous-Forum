@@ -6,7 +6,8 @@ const app = express();
 module.exports = {
   deletePost: (req, res) => {
     const { post_id } = req.params;
-    db.deletePost(post_id , (err, result) => {
+    const { passwordId } = req.body;
+    db.deletePost(post_id, passwordId, (err, result) => {
       if (err) {
         res.status(400);
         console.log(err);
@@ -19,7 +20,8 @@ module.exports = {
 
   deleteComment: (req, res) => {
     const { comment_id } = req.params;
-    db.deleteComment(comment_id, (err, result) => {
+    const { passwordId } = req.body;
+    db.deleteComment(comment_id, passwordId, (err, result) => {
       if (err) {
         res.status(400)
         console.log(err);
@@ -32,7 +34,8 @@ module.exports = {
 
   deleteReply: (req, res) => {
     const { reply_id } = req.params;
-    db.deleteReply(reply_id, (err, result) => {
+    const { passwordId } = req.body;
+    db.deleteReply(reply_id, passwordId, (err, result) => {
       if (err) {
         res.status(400);
         console.log(err);

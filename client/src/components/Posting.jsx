@@ -5,18 +5,24 @@ import './Posting.css';
 import Comment from './Comment.jsx'
 import WriteComment from './WriteComment.jsx';
 import WritePost from './WritePost.jsx';
+import DeletePost from './DeletePost.jsx';
 
 function Posting() {
   const [currentPosting, setCurrentPosting] = useState(null);
   const [writeCommentShow, setWriteCommentShow] = useState(false);
   const [writePostShow, setWritePostShow] = useState(false);
   const [commentId, setCommentId] = useState(null);
+  const [deletePostShow, setDeletePostShow] = useState(false);
+  const [postId, setPostId] = useState(null);
 
-  const viewPostComments = (id) => {
-    writePostShow ? setWritePostShow(false) : setWritePostShow(true);
+  const viewDeletePost = (id) => {
+    deletePostShow ? setDeletePostShow(false) : setDeletePostShow(true);
+    setPostId(id);
   }
 
-console.log(commentId)
+  const viewPostComments = () => {
+    writePostShow ? setWritePostShow(false) : setWritePostShow(true);
+  }
 
   const viewWriteComments = (id) => {
     writeCommentShow ? setWriteCommentShow(false) : setWriteCommentShow(true);
@@ -50,9 +56,10 @@ console.log(commentId)
             <div className="postings_like">{post.post_upvote ? post.post_upvote: 0} likes</div>
             <div className="postings_comment">comment</div>
             <div className="postings_write"  onClick={() => {viewWriteComments(post.post_id)}}>write</div>
-            <div className="postings_delete">delete</div>
+            <div className="postings_delete" onClick={() => {viewDeletePost(post.post_id)}}>delete</div>
             <Comment post={post.post_id} />
             <WriteComment show={writeCommentShow} post={commentId} handleClose={viewWriteComments} />
+            <DeletePost show={deletePostShow} handleClose={viewDeletePost} postId={postId}/>
           </div>
         ))}
       </div>

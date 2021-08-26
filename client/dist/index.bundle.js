@@ -11828,8 +11828,6 @@ function Comment(_ref) {
       comment_key = _useState6[0],
       setComment_key = _useState6[1];
 
-  console.log(comment_key);
-
   var viewReplyComments = function viewReplyComments(id) {
     setComment_key(id);
     writeReplyShow ? setWriteReplyShow(false) : setWriteReplyShow(true);
@@ -11908,9 +11906,7 @@ function Comment(_ref) {
         className: "comments_like"
       }, (_comments$comment_lik = comments.comment_like) !== null && _comments$comment_lik !== void 0 ? _comments$comment_lik : 0, " likes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "comments_dislike"
-      }, (_comments$comment_dis = comments.comment_dislike) !== null && _comments$comment_dis !== void 0 ? _comments$comment_dis : 0, " dislikes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-        className: "comments_reply"
-      }, "Reply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Reply_jsx__WEBPACK_IMPORTED_MODULE_6__.default, {
+      }, (_comments$comment_dis = comments.comment_dislike) !== null && _comments$comment_dis !== void 0 ? _comments$comment_dis : 0, " dislikes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Reply_jsx__WEBPACK_IMPORTED_MODULE_6__.default, {
         id: comments.comment_id
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
         className: "comments_write",
@@ -11931,6 +11927,130 @@ function Comment(_ref) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Comment);
+
+/***/ }),
+
+/***/ "./src/components/DeletePost.jsx":
+/*!***************************************!*\
+  !*** ./src/components/DeletePost.jsx ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _DeletePost_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DeletePost.css */ "./src/components/DeletePost.css");
+/* harmony import */ var _DeletePost_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_DeletePost_css__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+function WritePost(_ref) {
+  var show = _ref.show,
+      handleClose = _ref.handleClose,
+      postId = _ref.postId;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
+      password = _useState2[0],
+      setPassword = _useState2[1];
+
+  var showHideWritePost = show ? "modal display-block" : "modal display-none";
+
+  var updatePassword = function updatePassword(e) {
+    setPassword(e.target.value);
+  };
+
+  console.log(password);
+  console.log(postId);
+
+  var deletePosting = /*#__PURE__*/function () {
+    var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee() {
+      var post;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              post = {
+                passwordId: password
+              };
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().put("/delete/post/".concat(postId), post);
+
+            case 4:
+              console.log('successfully deleted a post');
+              _context.next = 10;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              console.log('error when deleting a post');
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+
+    return function deletePosting() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: showHideWritePost
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "deletePost"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("section", {
+    className: "deletePost_modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "deletePost_inside_model"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "deletePost_title"
+  }, "Delete Post"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("form", {
+    onSubmit: deletePosting
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "deletePostPassword"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
+    htmlFor: "deletePostNickPassword_input",
+    className: "deletePostPassword_label"
+  }, "Password *:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
+    type: "password",
+    name: "deletePassword",
+    onChange: updatePassword,
+    placeholder: "Password to delete your post",
+    maxLength: "60",
+    id: "deletePostPassword_input",
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "deletePostButton_wrappers"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
+    type: "submit",
+    value: "Submit",
+    className: "deletePostButton"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "deletePostButton_divider"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", {
+    type: "button",
+    className: "deletePostButton",
+    onClick: handleClose
+  }, "Close")))))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (WritePost);
 
 /***/ }),
 
@@ -12005,6 +12125,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Comment_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Comment.jsx */ "./src/components/Comment.jsx");
 /* harmony import */ var _WriteComment_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./WriteComment.jsx */ "./src/components/WriteComment.jsx");
 /* harmony import */ var _WritePost_jsx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./WritePost.jsx */ "./src/components/WritePost.jsx");
+/* harmony import */ var _DeletePost_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./DeletePost.jsx */ "./src/components/DeletePost.jsx");
+
 
 
 
@@ -12037,11 +12159,24 @@ function Posting() {
       commentId = _useState8[0],
       setCommentId = _useState8[1];
 
-  var viewPostComments = function viewPostComments(id) {
-    writePostShow ? setWritePostShow(false) : setWritePostShow(true);
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState9, 2),
+      deletePostShow = _useState10[0],
+      setDeletePostShow = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null),
+      _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState11, 2),
+      postId = _useState12[0],
+      setPostId = _useState12[1];
+
+  var viewDeletePost = function viewDeletePost(id) {
+    deletePostShow ? setDeletePostShow(false) : setDeletePostShow(true);
+    setPostId(id);
   };
 
-  console.log(commentId);
+  var viewPostComments = function viewPostComments() {
+    writePostShow ? setWritePostShow(false) : setWritePostShow(true);
+  };
 
   var viewWriteComments = function viewWriteComments(id) {
     writeCommentShow ? setWriteCommentShow(false) : setWriteCommentShow(true);
@@ -12120,13 +12255,20 @@ function Posting() {
           viewWriteComments(post.post_id);
         }
       }, "write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-        className: "postings_delete"
+        className: "postings_delete",
+        onClick: function onClick() {
+          viewDeletePost(post.post_id);
+        }
       }, "delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Comment_jsx__WEBPACK_IMPORTED_MODULE_7__.default, {
         post: post.post_id
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_WriteComment_jsx__WEBPACK_IMPORTED_MODULE_8__.default, {
         show: writeCommentShow,
         post: commentId,
         handleClose: viewWriteComments
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_DeletePost_jsx__WEBPACK_IMPORTED_MODULE_10__.default, {
+        show: deletePostShow,
+        handleClose: viewDeletePost,
+        postId: postId
       }));
     }));
   } else {
@@ -12811,6 +12953,27 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "// extracted by mini-css-extract-plugin\nexport {};", "",{"version":3,"sources":["webpack://src/components/Comment.css"],"names":[],"mappings":"AAAA;QACQ,CAAA","sourcesContent":["// extracted by mini-css-extract-plugin\nexport {};"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/DeletePost.css":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/DeletePost.css ***!
+  \*************************************************************************************************************************************************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "// extracted by mini-css-extract-plugin\nexport {};", "",{"version":3,"sources":["webpack://src/components/DeletePost.css"],"names":[],"mappings":"AAAA;QACQ,CAAA","sourcesContent":["// extracted by mini-css-extract-plugin\nexport {};"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -44638,6 +44801,34 @@ module.exports = content.locals || {};
 
 var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
             var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js!./Comment.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/Comment.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.id, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/components/DeletePost.css":
+/*!***************************************!*\
+  !*** ./src/components/DeletePost.css ***!
+  \***************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js!./DeletePost.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./src/components/DeletePost.css");
 
             content = content.__esModule ? content.default : content;
 

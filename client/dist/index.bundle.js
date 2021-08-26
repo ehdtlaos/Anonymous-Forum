@@ -12517,7 +12517,7 @@ function Posting() {
       onClick: function onClick() {
         toLeft();
       }
-    }, "Left"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    }, "Pre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
       className: "main_write",
       onClick: function onClick() {
         viewPostComments();
@@ -12527,7 +12527,7 @@ function Posting() {
       onClick: function onClick() {
         toRight();
       }
-    }, "Right")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_WritePost_jsx__WEBPACK_IMPORTED_MODULE_9__.default, {
+    }, "Next")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_WritePost_jsx__WEBPACK_IMPORTED_MODULE_9__.default, {
       show: writePostShow,
       handleClose: viewPostComments
     }), currentPosting.map(function (post) {

@@ -70,11 +70,11 @@ function Posting() {
         <div className="main_together">
         <div className="main_before" onClick={() => {
           toLeft()
-        }}>Left</div>
+        }}>Pre</div>
         <div className="main_write" onClick={() => {viewPostComments()}}>WRITE</div>
         <div className="main_after" onClick={() => {
           toRight()
-        }}>Right</div>
+        }}>Next</div>
         </div>
         <WritePost show={writePostShow} handleClose={viewPostComments} />
         {currentPosting.map((post) => (

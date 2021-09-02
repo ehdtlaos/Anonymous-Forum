@@ -1,5 +1,9 @@
-#MVP
-Create a website using MVP
+# Overview
+Create a website using MVP within 2 days
+Anonymous Forum: Forum where people can write a post anonymously. Abilitiy to delete if one remembers his/her password.
 
-Title: Anonymous Forum
-Function: Create a post anonymously. Comment and reply comment to communicate with users. Delete post, comment or reply using password you have set it up during posting, writing comment or reply. Admin has admin-password where admin can delete any post using single admin-password
+# Features
+
+# Setup & Installation
+
+# Usage & Details

@@ -1,8 +1,10 @@
 # Overview
-Create a website using MVP within 2 days
-Anonymous Forum: Forum where people can write a post anonymously. Abilitiy to delete if one remembers his/her password.
+A two-day coding project focused on developing an MVP
+This application allows users to create a post anonymously
 
 # Features
+![alt text](https://ibb.co/1sW1crf)
+
 
 # Setup & Installation
 

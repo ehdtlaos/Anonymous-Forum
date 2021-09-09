@@ -11,6 +11,7 @@ User should be able to wrtie a post anonymously, delete the post and write a com
 
 # Features
 ![alt text](https://i.ibb.co/CJGgLb5/Screen-Shot-2021-09-09-at-11-10-11-AM.png)
+
 Entire design is simple and straightforward due to time limit on the project. Users can interact with each other through posting a post, commenting on a post and replying to the comment.
 
 # Setup & Installation
